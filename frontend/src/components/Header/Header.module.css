@@ -1,0 +1,237 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  background-color: transparent;
+
+  transition:
+    background-color 0.3s ease,
+    padding 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.scrolled {
+  background-color: var(--bg-white);
+  padding: 10px 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.innerHeader {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 8px 0;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.logoLeft {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-right: 4px;
+}
+
+.logoLeft::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 60%;
+  transform: translateY(-50%);
+  color: var(--dark-blue);
+  width: 1px;
+  height: 100%;
+  background-color: var(--dark-blue);
+  border-radius: 8px;
+}
+
+.logoText {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.accent {
+  color: var(--main-teal);
+}
+
+.logoTagline {
+  line-height: 0.1;
+  font-size: 0.5rem;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.logoRight {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75rem;
+  gap: 0px;
+  line-height: 1.2;
+}
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.burger span {
+  width: 24px;
+  height: 3px;
+  background-color: var(--dark-blue);
+  border-radius: var(--radius-sm);
+  transition: all 0.3s linear;
+  position: relative;
+  transform-origin: 1px;
+}
+
+.burgerActive span:first-child {
+  transform: rotate(45deg);
+}
+.burgerActive span:nth-child(2) {
+  opacity: 0;
+}
+
+.burgerActive span:last-child {
+  transform: rotate(-45deg);
+}
+
+.burgerActive span {
+  background-color: var(--bg-white);
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 70%;
+  height: 100vh;
+  background-color: var(--main-teal-opacity);
+  box-shadow: var(--shadow-md);
+  padding: 96px 32px;
+  z-index: 100;
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+}
+
+.navActive {
+  transform: translateX(0);
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.navList a {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--bg-white);
+}
+
+.contact {
+  margin-top: 32px;
+  padding: 12px 24px;
+  background-color: var(--dark-blue);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+.contactDesktop {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .burger {
+    display: none;
+  }
+
+  .contact {
+    display: none;
+  }
+
+  .logoContainer {
+    flex: 1;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: center;
+    position: static;
+    width: auto;
+    height: auto;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    transform: none;
+    flex-direction: row;
+    align-items: center;
+    flex: 0 0 auto;
+  }
+
+  .navList {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .navList a {
+    font-size: 1rem;
+    color: var(--dark-blue);
+  }
+
+  .contactWrapper {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+  }
+
+  .contactDesktop {
+    display: block;
+    border: none;
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    background-color: var(--main-teal);
+    color: var(--bg-white);
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .logoText {
+    font-size: 2rem;
+  }
+  .logoTagline {
+    font-size: 0.625rem;
+  }
+
+  .logoLeft {
+    padding-right: 8px;
+  }
+
+  .logoLeft::after {
+    width: 2px;
+  }
+
+  .logoRight {
+    font-size: 1rem;
+  }
+}
