@@ -1,6 +1,7 @@
 import * as Yup from "yup";
 
 export const initialValues = {
+  propertyType: "",
   firstName: "",
   lastName: "",
   phone: "",
@@ -13,5 +14,5 @@ export const validationSchema = Yup.object().shape({
   phone: Yup.string()
     .matches(/^\+?3?8?(0\d{9})$/, "Формат: 0XXXXXXXXX")
     .required("Потрібен телефон"),
-  address: Yup.string().min(10, "Вкажіть повну адресу (вулиця, будинок)").required("Адреса обов'язкова"),
+  address: Yup.string().min(10, "Вкажіть повну адресу (вулиця, будинок)"),
 });

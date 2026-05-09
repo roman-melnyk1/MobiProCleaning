@@ -1,0 +1,53 @@
+.about {
+  margin-top: 32px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.item {
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-md);
+  border-bottom: 5px var(--dark-blue) solid;
+  padding: 8px;
+}
+
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  border: 2px var(--dark-blue) solid;
+  border-radius: var(--radius-sm);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.textWrapper {
+  display: flex;
+}
+
+@media (min-width: 1024px) {
+  .itemWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .iconWrapper svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+}

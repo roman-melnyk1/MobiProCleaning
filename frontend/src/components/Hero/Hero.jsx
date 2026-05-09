@@ -1,6 +1,9 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { initialValues, validationSchema } from "./formConfig";
 import css from "./Hero.module.css";
+import flatImg from "../../assets/photo/apartment.webp"; // Перевір свій шлях і розширення!
+import houseImg from "../../assets/photo/house.webp";
+import officeImg from "../../assets/photo/office.webp";
 
 export default function Hero() {
   const handleSubmit = (values, { resetForm }) => {
@@ -8,6 +11,27 @@ export default function Hero() {
     alert("Заявку прийнято! Ми зателефонуємо вам найближчим часом.");
     resetForm();
   };
+
+  const propertyTypes = [
+    {
+      id: "Квартира",
+      label: "Квартира",
+      bgImage: flatImg,
+      bgSize: "40%",
+    },
+    {
+      id: "Будинок",
+      label: "Будинок",
+      bgImage: houseImg,
+      bgSize: "40%",
+    },
+    {
+      id: "Офіс або ТЦ",
+      label: "Офіс або ТЦ",
+      bgImage: officeImg,
+      bgSize: "30%",
+    },
+  ];
 
   return (
     <section className={css.hero}>
@@ -24,32 +48,45 @@ export default function Hero() {
           </div>
 
           <div className={css.formWrapper}>
-            <div className={css.formCard}>
-              <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-                {({ errors, touched }) => (
-                  <Form className={css.form}>
+            <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+              {({ errors, touched, values, setFieldValue }) => (
+                <Form className={css.form}>
+                  <div className={css.tabsContainer}>
+                    {propertyTypes.map((item) => (
+                      <button
+                        key={item.id}
+                        type='button'
+                        className={`${css.tabBtn} ${values.propertyType === item.id ? css.activeTab : ""}`}
+                        onClick={() => setFieldValue("propertyType", item.id)}
+                        style={{ backgroundImage: `url(${item.bgImage})`, backgroundSize: item.bgSize }}
+                      >
+                        {item.label}
+                      </button>
+                    ))}
+                  </div>
+                  <div className={css.formCard}>
                     <div className={css.row}>
                       <div className={css.fieldBox}>
+                        <ErrorMessage name='firstName' component='div' className={css.errorText} />
                         <Field
                           name='firstName'
                           placeholder="Ім'я"
                           className={`${css.input} ${errors.firstName && touched.firstName ? css.errorInput : ""}`}
                         />
-                        <ErrorMessage name='firstName' component='div' className={css.errorText} />
                       </div>
                       <div className={css.fieldBox}>
+                        <ErrorMessage name='lastName' component='div' className={css.errorText} />
                         <Field
                           name='lastName'
                           placeholder='Прізвище'
                           className={`${css.input} ${errors.lastName && touched.lastName ? css.errorInput : ""}`}
                         />
-                        <ErrorMessage name='lastName' component='div' className={css.errorText} />
                       </div>
                     </div>
 
                     <div className={css.fieldBox}>
-                      <Field name='phone' type='tel' placeholder='Номер телефону' className={css.input} />
                       <ErrorMessage name='phone' component='div' className={css.errorText} />
+                      <Field name='phone' type='tel' placeholder='Номер телефону' className={css.input} />
                     </div>
 
                     <div className={css.fieldBox}>
@@ -60,10 +97,10 @@ export default function Hero() {
                     <button type='submit' className={css.submitBtn}>
                       Надіслати заявку
                     </button>
-                  </Form>
-                )}
-              </Formik>
-            </div>
+                  </div>
+                </Form>
+              )}
+            </Formik>
           </div>
         </div>
       </div>
