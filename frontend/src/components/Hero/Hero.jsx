@@ -1,14 +1,18 @@
+import css from "./Hero.module.css";
+import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { initialValues, validationSchema } from "./formConfig";
-import css from "./Hero.module.css";
-import flatImg from "../../assets/photo/apartment.webp"; // Перевір свій шлях і розширення!
+import ModalSimple from "../ModalSimple/ModalSimple";
+
+import flatImg from "../../assets/photo/apartment.webp";
 import houseImg from "../../assets/photo/house.webp";
 import officeImg from "../../assets/photo/office.webp";
 
 export default function Hero() {
+  const [showModal, setShowModal] = useState(false);
   const handleSubmit = (values, { resetForm }) => {
     console.log("Дані форми:", values);
-    alert("Заявку прийнято! Ми зателефонуємо вам найближчим часом.");
+    setShowModal(true);
     resetForm();
   };
 
@@ -39,7 +43,7 @@ export default function Hero() {
         <div className={css.innerHero}>
           <div className={css.content}>
             <h1 className={css.title}>
-              Ваші оселі в<span>надійних руках</span>
+              Ваші оселі в<span> надійних руках</span>
             </h1>
             <p className={css.description}>
               Новий стандарт чистоти для тих, хто цінує свій час та комфорт. Професійний підхід до кожного куточка вашої
@@ -104,6 +108,19 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      <ModalSimple
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        onCalculate={() => {
+          setShowModal(false);
+          const calcSection = document.getElementById("calc");
+          if (calcSection) {
+            calcSection.scrollIntoView({ behavior: "smooth" });
+          } else {
+            window.location.href = "#calc";
+          }
+        }}
+      />
     </section>
   );
 }

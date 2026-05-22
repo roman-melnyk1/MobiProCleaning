@@ -26,7 +26,7 @@ const aboutData = [
 
 export default function About() {
   return (
-    <section className={css.about}>
+    <section className={css.about} id='about'>
       <div className='container'>
         <div className={css.itemWrapper}>
           {aboutData.map((item, index) => (

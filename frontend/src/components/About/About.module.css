@@ -10,10 +10,12 @@
 
 .item {
   margin-bottom: 16px;
-  box-shadow: var(--shadow-sm);
   border-radius: var(--radius-md);
-  border-bottom: 5px var(--dark-blue) solid;
+  /* border-bottom: 5px var(--dark-blue) solid; */
+  border-left: 2px var(--dark-blue) solid;
+  border-right: 2px var(--dark-blue) solid;
   padding: 8px;
+  box-shadow: var(--shadow-md);
 }
 
 .iconWrapper {
@@ -39,15 +41,11 @@
   .itemWrapper {
     display: flex;
     flex-direction: row;
-    gap: 8px;
+    gap: 16px;
   }
 
   .iconWrapper svg {
     width: 32px;
     height: 32px;
-  }
-
-  .title {
-    font-size: 1.75rem;
   }
 }

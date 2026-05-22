@@ -4,11 +4,9 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-
   background-color: transparent;
   border-bottom-right-radius: var(--radius-md);
   border-bottom-left-radius: var(--radius-md);
-
   transition:
     background-color 0.3s ease,
     padding 0.3s ease,
@@ -54,10 +52,15 @@
   border-radius: 8px;
 }
 
-.logoText {
-  font-size: 1.5rem;
+.logoText1 {
+  margin-top: 8px;
+  font-size: 0.8rem;
   font-weight: 500;
-  line-height: 1;
+}
+
+.logoText2 {
+  font-size: 0.8rem;
+  font-weight: 500;
 }
 
 .accent {
@@ -88,7 +91,8 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 999;
+  margin-top: 8px;
+  z-index: 1001;
 }
 
 .burger span {
@@ -104,6 +108,7 @@
 .burgerActive span:first-child {
   transform: rotate(45deg);
 }
+
 .burgerActive span:nth-child(2) {
   opacity: 0;
 }
@@ -113,60 +118,102 @@
 }
 
 .burgerActive span {
-  background-color: var(--bg-white);
+  background-color: var(--dark-blue);
 }
 
 .nav {
   position: fixed;
   top: 0;
   right: 0;
-  width: 70%;
+  width: 100%;
   height: 100vh;
-  background-color: var(--main-teal-opacity);
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
   box-shadow: var(--shadow-md);
-  padding: 96px 32px;
+  padding: 40px 24px;
   z-index: 100;
   transform: translateX(100%);
-  transition: transform 0.4s ease-in-out;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
 }
 
 .navActive {
   transform: translateX(0);
 }
 
+.navLogoMobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: auto;
+}
+
+.navLogoMobile img {
+  width: 100%;
+  height: auto;
+}
+
 .navList {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0px;
+  width: 100%;
+  max-width: 280px;
+}
+
+.navList li {
+  width: 100%;
+  list-style: none;
+  text-align: center;
 }
 
 .navList a {
+  display: block;
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--bg-white);
+  color: var(--dark-blue);
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(22, 38, 76, 0.1);
+  transition: color 0.2s ease;
+}
+
+.navList li:last-child a {
+  border-bottom: none;
 }
 
 .contact {
-  margin-top: 32px;
-  padding: 12px 24px;
-  background-color: var(--dark-blue);
-  color: white;
+  width: 100%;
+  max-width: 280px;
+  padding: 14px 24px;
+  background-color: var(--main-teal);
+  color: var(--bg-white);
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-lg);
+  font-size: 1.2rem;
   font-weight: 600;
   box-shadow: var(--shadow-sm);
+  cursor: pointer;
 }
 
 .contactDesktop {
   display: none;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .burger {
     display: none;
   }
 
   .contact {
+    display: none;
+  }
+
+  .navLogoMobile {
     display: none;
   }
 
@@ -181,22 +228,64 @@
     width: auto;
     height: auto;
     background: transparent;
+    backdrop-filter: none;
     box-shadow: none;
     padding: 0;
     transform: none;
     flex-direction: row;
     align-items: center;
     flex: 0 0 auto;
+    gap: 0px;
   }
 
   .navList {
     flex-direction: row;
     gap: 32px;
+    max-width: none;
+  }
+
+  .navList li {
+    width: auto;
   }
 
   .navList a {
     font-size: 1rem;
     color: var(--dark-blue);
+    padding: 0;
+    border-bottom: none;
+  }
+
+  .navList li:last-child a {
+    border-bottom: none;
+  }
+
+  .navList a {
+    font-size: 1rem;
+    color: var(--dark-blue);
+    padding: 0;
+    border-bottom: none;
+
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s ease;
+  }
+
+  .navList a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--dark-blue);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+
+  .navList a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
   }
 
   .contactWrapper {
@@ -217,9 +306,14 @@
     cursor: pointer;
   }
 
-  .logoText {
-    font-size: 2rem;
+  .logoText1 {
+    font-size: 0.75rem;
   }
+
+  .logoText2 {
+    font-size: 0.7rem;
+  }
+
   .logoTagline {
     font-size: 0.625rem;
   }

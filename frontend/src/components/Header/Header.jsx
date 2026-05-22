@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import css from "./Header.module.css";
+import photo from "../../assets/photo/MobiProCleaning.png";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,25 +18,29 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <header className={`${css.header} ${isScrolled ? css.scrolled : ""}`}>
       <div className='container'>
         <div className={css.innerHeader}>
           <div className={css.logoContainer}>
             <div className={css.logoLeft}>
-              <p className={css.logoText}>
-                Chikin<span className={css.accent}>Clean</span>
-              </p>
-              <p className={css.logoTagline}>Ветеранський бізнес</p>
+              <a href='#'>
+                <img src={photo} alt='MobiProCleaning' width='80' />
+              </a>
             </div>
             <div className={css.separator}></div>
             <div className={css.logoRight}>
-              <span>Клінінгова</span>
-              <span>Компанія</span>
+              <span className={css.logoText1}>Мобільно-Професійний клінінг</span>
+              <span className={css.logoText2}>ветеранський бізнес</span>
             </div>
           </div>
 
           <nav className={`${css.nav} ${isOpen ? css.navActive : ""}`}>
+            <div className={css.navLogoMobile}>
+              <img src={photo} alt='MobiProCleaning' width='90' />
+            </div>
+
             <ul className={css.navList}>
               <li>
                 <a href='#about' onClick={() => setIsOpen(false)}>

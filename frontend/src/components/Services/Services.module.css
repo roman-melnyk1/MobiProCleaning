@@ -1,0 +1,146 @@
+.services {
+  padding: 48px 0px 64px 0px;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.card {
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-sm);
+  transition: transform 0.3s ease;
+}
+
+.imageWrapper {
+  border-top-left-radius: var(--radius-sm);
+  border-top-right-radius: var(--radius-sm);
+  max-height: 90px;
+  background-size: cover;
+  background-position: center;
+  padding: 0px 16px 0px 16px;
+}
+
+.cardTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1.15;
+  min-height: 80px;
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 8px;
+}
+
+.price {
+  padding-bottom: 8px;
+}
+
+.detailsBtn {
+  padding: 8px;
+  background-color: var(--main-teal);
+  color: var(--bg-white);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease;
+}
+
+.allServicesBtn {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+  padding: 16px 8px;
+  background-color: var(--main-teal);
+  border-radius: var(--radius-md);
+  color: var(--bg-white);
+  font-weight: 500;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.arrowIcon {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  margin-top: 4px;
+  margin-right: 4px;
+}
+
+@media (min-width: 768px) {
+  .cardsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card:hover {
+    transform: scale(1.1);
+  }
+
+  .detailsBtn:active {
+    transform: scale(0.95);
+  }
+}
+
+@media (min-width: 1024px) {
+  .sectionTitle {
+    font-size: 2.5rem;
+    margin-bottom: 48px;
+    font-weight: 500;
+  }
+
+  .cardsGrid {
+    grid-template-columns: repeat(4, 240px);
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .cardTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .cardBody {
+    flex-direction: row;
+    gap: 16px;
+  }
+  .price {
+    font-size: 1.25rem;
+    line-height: normal;
+    padding-bottom: 0px;
+  }
+
+  .allServicesWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .allServicesBtn {
+    min-width: 500px;
+    font-size: 1.5rem;
+    transition: transform 0.2s ease;
+  }
+
+  .allServicesBtn:active {
+    transform: scale(0.9);
+  }
+}

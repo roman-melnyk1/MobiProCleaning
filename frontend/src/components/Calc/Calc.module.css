@@ -1,0 +1,202 @@
+.calculatorSection {
+  padding: 60px 0;
+  background-color: var(--bg-white);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--dark-blue);
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+/* --- РОЗМІТКА НА ДВІ КОЛОНКИ --- */
+.splitLayout {
+  display: grid;
+  grid-template-columns: 1fr; /* На мобілці - 1 колонка */
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* На ПК та планшетах робимо 2 колонки */
+@media (min-width: 1024px) {
+  .splitLayout {
+    grid-template-columns: 1.1fr 0.9fr; /* Форма трохи ширша за інфо-панель */
+    gap: 40px;
+    align-items: start;
+  }
+}
+
+/* --- ЛІВА КОЛОНКА: ФОРМА --- */
+.formCard {
+  width: 100%;
+  background-color: transparent;
+  border: 2px solid var(--main-teal);
+  border-radius: 24px;
+  padding: 30px 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 15px;
+  color: var(--dark-blue);
+  background-color: transparent;
+  border: 1px solid var(--dark-blue);
+  border-radius: 50px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.input:focus,
+.select:focus {
+  border-color: var(--main-teal);
+}
+
+.input::placeholder,
+.select:invalid {
+  color: var(--dark-blue-opacity);
+}
+
+.icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--dark-blue);
+  pointer-events: none;
+}
+
+.rowGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 400px) {
+  .rowGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.priceBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: rgba(22, 38, 76, 0.03); /* Можна замінити на var(--bg-gray), якщо є */
+  border-radius: var(--radius-md);
+  margin-top: 10px;
+}
+
+.priceLabel {
+  font-size: 15px;
+  color: var(--main-teal-opacity);
+}
+
+.priceValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark-blue);
+}
+
+.submitBtn {
+  margin-top: 10px;
+  width: 100%;
+  background-color: var(--main-teal);
+  color: var(--bg-white);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.submitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md); /* Якщо є змінна для hover-тіні, можна замінити тут */
+}
+
+/* --- ПРАВА КОЛОНКА: ІНФОРМАЦІЯ ПРО ПАКЕТ --- */
+.infoCard {
+  background-color: rgba(85, 166, 166, 0.05); /* Легкий бірюзовий фон */
+  border: 1px solid rgba(85, 166, 166, 0.2);
+  border-radius: 24px;
+  padding: 30px;
+  height: 100%;
+}
+
+.infoTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--dark-blue);
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.infoTitle span {
+  color: var(--main-teal);
+}
+
+.servicesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.servicesItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--dark-blue);
+  line-height: 1.5;
+}
+
+.checkIcon {
+  color: var(--main-teal);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: var(--dark-blue-opacity);
+  font-size: 15px;
+  padding: 20px;
+  border: 1px dashed var(--main-teal-opacity);
+  border-radius: var(--radius-md);
+}
