@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import css from "./Header.module.css";
 import photo from "../../assets/photo/MobiProCleaning.png";
 
@@ -25,9 +26,9 @@ export default function Header() {
         <div className={css.innerHeader}>
           <div className={css.logoContainer}>
             <div className={css.logoLeft}>
-              <a href='#'>
+              <Link to='/'>
                 <img src={photo} alt='MobiProCleaning' width='80' />
-              </a>
+              </Link>
             </div>
             <div className={css.separator}></div>
             <div className={css.logoRight}>
@@ -43,24 +44,24 @@ export default function Header() {
 
             <ul className={css.navList}>
               <li>
-                <a href='#about' onClick={() => setIsOpen(false)}>
+                <Link to='/about' onClick={() => setIsOpen(false)}>
                   Про нас
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#prices' onClick={() => setIsOpen(false)}>
+                <Link to='/prices' onClick={() => setIsOpen(false)}>
                   Ціни
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#services' onClick={() => setIsOpen(false)}>
+                <Link to='/#services' onClick={() => setIsOpen(false)}>
                   Послуги
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#calc' onClick={() => setIsOpen(false)}>
+                <Link to='/#calc' onClick={() => setIsOpen(false)}>
                   Розрахунок
-                </a>
+                </Link>
               </li>
             </ul>
 
