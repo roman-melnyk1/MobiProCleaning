@@ -32,9 +32,14 @@
   background-color: #ffffff;
   width: 100%;
   max-width: 560px;
+  /* Зменшуємо відступи для телефону */
+  padding: 24px 16px;
+  /* Додаємо обмеження по висоті та внутрішній скрол, якщо послуг багато */
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+
   border: 1px solid rgba(85, 166, 166, 0.2);
   border-radius: 24px;
-  padding: 40px 32px;
   position: relative;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -44,6 +49,42 @@
   transition:
     transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
     opacity 0.3s ease;
+}
+
+.modalTitle {
+  font-size: 1.5rem; /* Було 2rem, завелике для мобілки */
+  font-weight: 700;
+  color: var(--dark-blue);
+  margin-bottom: 20px;
+  text-align: center; /* На телефоні краще виглядає по центру */
+}
+
+/* Дозволяємо довгому тексту в чеку переноситися на новий рядок */
+.label {
+  font-size: 0.95rem; /* Трохи менший шрифт */
+  color: var(--dark-blue);
+  white-space: normal; /* ВИПРАВЛЕНО: Було nowrap. Це розпирало екран! */
+  max-width: 70%; /* Щоб текст не налізав на цифри */
+}
+
+.value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dark-blue);
+  white-space: nowrap; /* Сума нехай залишається в один рядок */
+}
+
+.totalLabel {
+  font-size: 1.5rem; /* Менший шрифт для телефону */
+  font-weight: 700;
+  color: var(--dark-blue);
+}
+
+.totalPrice {
+  font-size: 1.5rem; /* Менший шрифт для телефону */
+  font-weight: 500;
+  color: var(--dark-blue);
+  white-space: nowrap; /* Щоб ціна не розривалася */
 }
 
 .modalActive {
@@ -112,13 +153,6 @@
   font-weight: 600;
 }
 
-.modalTitle {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--dark-blue);
-  margin-bottom: 28px;
-}
-
 .receipt {
   display: flex;
   flex-direction: column;
@@ -133,25 +167,12 @@
   width: 100%;
 }
 
-.label {
-  font-size: 1.05rem;
-  color: var(--dark-blue);
-  white-space: nowrap;
-}
-
 .dots {
   flex: 1;
   border-bottom: 1px dotted rgba(22, 38, 76, 0.3);
   margin: 0 8px;
   position: relative;
   top: -4px;
-}
-
-.value {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--dark-blue);
-  white-space: nowrap;
 }
 
 .footerRow {
@@ -166,18 +187,6 @@
   display: flex;
   align-items: baseline;
   gap: 8px;
-}
-
-.totalLabel {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--dark-blue);
-}
-
-.totalPrice {
-  font-size: 2rem;
-  font-weight: 500;
-  color: var(--dark-blue);
 }
 
 .buttonGroup {
