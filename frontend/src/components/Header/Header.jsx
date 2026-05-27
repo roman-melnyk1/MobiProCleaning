@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import css from "./Header.module.css";
-import photo from "../../assets/photo/MobiProCleaning.png";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +26,7 @@ export default function Header() {
           <div className={css.logoContainer}>
             <div className={css.logoLeft}>
               <Link to='/'>
-                <img src={photo} alt='MobiProCleaning' width='80' />
+                <img src='/logo.png' alt='MobiProCleaning' width='80' />
               </Link>
             </div>
             <div className={css.separator}></div>
@@ -39,7 +38,7 @@ export default function Header() {
 
           <nav className={`${css.nav} ${isOpen ? css.navActive : ""}`}>
             <div className={css.navLogoMobile}>
-              <img src={photo} alt='MobiProCleaning' width='90' />
+              <img src='/logo.png' alt='MobiProCleaning' width='90' />
             </div>
 
             <ul className={css.navList}>

@@ -1,6 +1,5 @@
 import css from "./ModalCalcResult.module.css";
 import { Download } from "lucide-react";
-import photo from "../../assets/photo/MobiProCleaning.png";
 
 const EXTRA_PRICES = {
   "windows-season": 200,
@@ -38,7 +37,7 @@ export default function ModalCalcResult({ isOpen, onClose, onOrder, calcData }) 
         </button>
 
         <div className={css.logoContainer}>
-          <img src={photo} alt='MobiProCleaningLogo' width='80' />
+          <img src='/logo.png' alt='MobiProCleaningLogo' width='80' />
           <div className={css.logoRight}>
             <span>Мобільно-Професійний клінінг</span>
             <span className={css.logoTagline}>ветеранський бізнес</span>

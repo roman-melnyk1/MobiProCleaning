@@ -1,5 +1,4 @@
 import css from "./Footer.module.css";
-import photo from "../../assets/photo/MobiProCleaning.png";
 
 import facebookIcon from "../../assets/svg/facebook.svg";
 import viberIcon from "../../assets/svg/viber.svg";
@@ -16,7 +15,7 @@ export default function Footer() {
           <div className={css.logoContainer}>
             <div className={css.logoLeft}>
               <a href='#'>
-                <img src={photo} alt='MobiProCleaning' width='80' />
+                <img src='/logo.png' alt='MobiProCleaning' width='80' />
               </a>
             </div>
             <div className={css.separator}></div>
