@@ -1,0 +1,182 @@
+.main {
+  background-color: var(--bg-white);
+  padding-top: 100px; /* Відступ під фіксований хедер */
+}
+
+.pricesHeader {
+  padding: 40px 0 80px;
+  text-align: center;
+}
+
+.pageTitle {
+  font-size: 2.5rem;
+  color: var(--dark-blue);
+  margin-bottom: 16px;
+}
+
+.pageSubtitle {
+  color: var(--dark-blue-opacity);
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+/* ТАБИ */
+.propertyTabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.tabBtn {
+  flex: 1;
+  max-width: 180px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-white);
+  border: 1px solid var(--gray);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px; /* Щоб не було зуму на iOS */
+  color: var(--dark-blue);
+}
+
+.activeTab {
+  border-color: var(--main-teal);
+  background-color: rgba(17, 202, 160, 0.05);
+  color: var(--main-teal);
+  box-shadow: var(--shadow-md);
+}
+
+/* ГРІД КАРТОК */
+.priceGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.priceCard {
+  background: var(--bg-white);
+  padding: 32px 24px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.featured {
+  border: 2px solid var(--main-teal);
+  transform: scale(1);
+}
+
+.badge {
+  position: absolute;
+  top: -12px;
+  background: var(--main-teal);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.priceCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: var(--dark-blue);
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--main-teal);
+  margin-bottom: 16px;
+}
+
+.cardDesc {
+  font-size: 0.9rem;
+  color: var(--dark-blue-opacity);
+  margin-bottom: 24px;
+  min-height: 40px;
+}
+
+.cardBtn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--dark-blue);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ТАБЛИЦЯ */
+.comparisonSection {
+  padding: 80px 0;
+  background-color: rgba(22, 38, 76, 0.02);
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.tableWrapper {
+  overflow-x: auto; /* Скрол для мобілок */
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.table th {
+  background: var(--dark-blue);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--gray);
+  text-align: center;
+}
+
+.featureName {
+  text-align: left !important;
+  font-weight: 500;
+  color: var(--dark-blue);
+}
+
+.iconCheck {
+  color: var(--main-teal);
+}
+.iconX {
+  color: #cbd5e1;
+}
+
+/* АДАПТИВНІСТЬ */
+@media (min-width: 768px) {
+  .priceGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .featured {
+    transform: scale(1.05);
+  }
+}

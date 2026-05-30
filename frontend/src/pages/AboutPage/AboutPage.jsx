@@ -1,3 +1,11 @@
+import Info from "../../components/Info/Info";
+
 export default function AboutPage() {
-  return <></>;
+  return (
+    <>
+      <main>
+        <Info />
+      </main>
+    </>
+  );
 }
