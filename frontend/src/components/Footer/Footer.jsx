@@ -58,7 +58,7 @@ export default function Footer() {
               <li>
                 <a href='mailto:mobiprocleaning@gmail.com'>mobiprocleaning@gmail.com</a>
               </li>
-              <li className={css.address}>м. Львів, вул. Солонка 52А</li>
+              <li className={css.address}>м. Львів, вул. Червоної Калини</li>
             </ul>
           </div>
 
