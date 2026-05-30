@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"; // Імпортуємо Link
 import css from "./Footer.module.css";
 import photo from "../../assets/photo/MobiProCleaning.png";
 
@@ -10,14 +11,13 @@ export default function Footer() {
   return (
     <footer className={css.footer}>
       <div className='container'>
-        {/* Верхня частина футера (4 колонки на ПК / 1 колонка на мобілці) */}
         <div className={css.topSection}>
           {/* 1. Логотип */}
           <div className={css.logoContainer}>
             <div className={css.logoLeft}>
-              <a href='#'>
+              <Link to='/'>
                 <img src={photo} alt='MobiProCleaning' width='80' />
-              </a>
+              </Link>
             </div>
             <div className={css.separator}></div>
             <div className={css.logoRight}>
@@ -26,29 +26,29 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* 2. Меню */}
+          {/* 2. Меню (Тут застосовуємо Link) */}
           <div className={css.menuCol}>
             <h4 className={css.title}>Меню</h4>
             <ul className={css.list}>
               <li>
-                <a href='#'>Головна</a>
+                <Link to='/'>Головна</Link>
               </li>
               <li>
-                <a href='#'>Про нас</a>
+                <Link to='/about'>Про нас</Link>
               </li>
               <li>
-                <a href='#'>Послуги</a>
+                <Link to='/#services'>Послуги</Link>
               </li>
               <li>
-                <a href='#'>Ціни</a>
+                <Link to='/prices'>Ціни</Link>
               </li>
               <li>
-                <a href='#'>Розрахунок</a>
+                <Link to='/#calc'>Розрахунок</Link>
               </li>
             </ul>
           </div>
 
-          {/* 3. Контакти */}
+          {/* 3. Контакти (Залишаємо <a> для tel та mailto) */}
           <div className={css.contactCol}>
             <h4 className={css.title}>Контакти</h4>
             <ul className={css.list}>
@@ -62,7 +62,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* 4. Соцмережі */}
+          {/* 4. Соцмережі (Залишаємо <a> для зовнішніх посилань) */}
           <div className={css.socialsCol}>
             <div className={css.socialsWrapper}>
               <a
@@ -99,7 +99,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Нижня лінія з копірайтом */}
         <div className={css.bottomSection}>
           <p>© 2026 MobiCleanPro</p>
           <p className={css.devCredit}>Design & Dev by Roman Melnyk</p>
