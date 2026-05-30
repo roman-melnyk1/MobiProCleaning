@@ -37,9 +37,10 @@
   align-items: center;
   text-align: center;
   line-height: 1.15;
-  min-height: 80px;
-  font-size: 1.25rem;
+  min-height: 50px;
+  font-size: 1.1rem;
   margin-bottom: 8px;
+  padding: 0 8px;
 }
 
 .cardBody {
@@ -47,20 +48,29 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 8px;
+  padding-bottom: 16px;
+  width: 100%;
 }
 
 .price {
-  padding-bottom: 8px;
+  padding-bottom: 12px;
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .detailsBtn {
-  padding: 8px;
+  width: 80%;
+  max-width: 250px;
+  text-align: center;
+  padding: 10px 16px;
+
   background-color: var(--main-teal);
   color: var(--bg-white);
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-md);
   transition: transform 0.3s ease;
+  font-weight: 500;
+  text-decoration: none;
 }
 
 .allServicesBtn {
@@ -118,6 +128,7 @@
   .cardTitle {
     font-size: 1.5rem;
     font-weight: 600;
+    min-height: 80px;
   }
 
   .cardBody {
@@ -143,5 +154,9 @@
 
   .allServicesBtn:active {
     transform: scale(0.9);
+  }
+  .detailsBtn {
+    width: auto;
+    padding: 8px 16px;
   }
 }
