@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
@@ -21,6 +22,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <Analytics />
     </>
   );
 }
