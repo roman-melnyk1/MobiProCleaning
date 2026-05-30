@@ -21,27 +21,35 @@
 }
 
 /* ТАБИ */
-.propertyTabs {
+.tabsContainer {
   display: flex;
-  justify-content: center;
-  gap: 12px;
+  justify-content: space-between;
+  gap: 8px;
   margin-bottom: 48px;
+  width: 100%;
+  max-width: 600px; /* Обмежуємо ширину, щоб на ПК не були гігантськими */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tabBtn {
   flex: 1;
-  max-width: 180px;
-  padding: 16px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 8px;
-  background: var(--bg-white);
+  text-align: center;
+  font-size: 0.85rem;
+  min-height: 60px; /* Трохи більша висота для картинки */
+  padding: 8px;
   border: 1px solid var(--gray);
   border-radius: var(--radius-md);
+  background-color: var(--bg-white);
+  box-shadow: var(--shadow-md);
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 16px; /* Щоб не було зуму на iOS */
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: 0.3s ease;
   color: var(--dark-blue);
 }
 
@@ -52,6 +60,13 @@
   box-shadow: var(--shadow-md);
 }
 
+@media (min-width: 768px) {
+  .tabBtn {
+    font-size: 1.1rem;
+    padding: 16px;
+  }
+}
+
 /* ГРІД КАРТОК */
 .priceGrid {
   display: grid;
@@ -59,6 +74,33 @@
   gap: 24px;
 }
 
+.mainActionBtn {
+  margin-top: auto;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-radius: var(--radius-md); /* Використовуємо твою змінну */
+  background-color: var(--main-teal);
+  color: var(--bg-white);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.mainActionBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.mainActionBtn:active {
+  transform: scale(0.95);
+}
+
+/* Виправлення відступів для карток, щоб вони вирівнювалися */
 .priceCard {
   background: var(--bg-white);
   padding: 32px 24px;
@@ -68,6 +110,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  height: 100%; /* Щоб всі картки були однакової висоти */
 }
 
 .featured {

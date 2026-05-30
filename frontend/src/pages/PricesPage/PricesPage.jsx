@@ -1,18 +1,37 @@
 import { useState } from "react";
 import css from "./PricesPage.module.css";
-import { Check, X, Building2, Home, Building } from "lucide-react";
+import { Check, X } from "lucide-react";
+import flatImg from "../../assets/photo/apartment.webp";
+import houseImg from "../../assets/photo/house.webp";
+import officeImg from "../../assets/photo/office.webp";
 
+// Онови масив PROPERTY_TYPES, додавши туди images
 const PROPERTY_TYPES = [
-  { id: "flat", label: "Квартира", icon: <Building2 size={24} /> },
-  { id: "house", label: "Будинок", icon: <Home size={24} /> },
-  { id: "office", label: "Офіс / ТЦ", icon: <Building size={24} /> },
+  { id: "flat", label: "Квартира", bgImage: flatImg, bgSize: "25%" },
+  { id: "house", label: "Будинок", bgImage: houseImg, bgSize: "25%" },
+  { id: "office", label: "Офіс / ТЦ", bgImage: officeImg, bgSize: "25%" },
 ];
 
-const PRICE_DATA = {
-  flat: { regular: "від 1500₴", general: "від 2350₴", repair: "від 4500₴" },
-  house: { regular: "від 2200₴", general: "від 3800₴", repair: "від 6500₴" },
-  office: { regular: "від 40₴/м²", general: "від 65/м²", repair: "від 90₴/м²" },
-};
+const SERVICES = [
+  {
+    id: "regular",
+    title: "Підтримуюче прибирання",
+    desc: "Базове прибирання для підтримки чистоти: вологе прибирання підлоги, знепилення поверхонь, миття дзеркал та санвузлів.",
+    prices: { flat: "1500₴", house: "2200₴", office: "40₴/м²" },
+  },
+  {
+    id: "general",
+    title: "Генеральне прибирання",
+    desc: "Повне очищення: миття кухонних фасадів, плитки, важкодоступних місць, плінтусів, дверей та видалення складних плям.",
+    prices: { flat: "2350₴", house: "3800₴", office: "65₴/м²" },
+  },
+  {
+    id: "repair",
+    title: "Після ремонту",
+    desc: "Професійне видалення будпилу: миття вікон, рам, радіаторів, видалення залишків фарби, клею та цементного нальоту.",
+    prices: { flat: "4500₴", house: "6500₴", office: "90₴/м²" },
+  },
+];
 
 const COMPARISON_FEATURES = [
   { name: "Вологе прибирання підлоги та плінтусів", reg: true, gen: true, rep: true },
@@ -34,47 +53,35 @@ export default function PricesPage() {
         <section className={css.pricesHeader}>
           <div className='container'>
             <h1 className={css.pageTitle}>Ціни та Послуги</h1>
-            <p className={css.pageSubtitle}>
-              Прозора вартість без прихованих платежів. Оберіть тип приміщення для розрахунку.
-            </p>
+            <p className={css.pageSubtitle}>Оберіть тип приміщення, щоб побачити актуальну вартість.</p>
 
-            {/* Перемикачі типу приміщення */}
-            <div className={css.propertyTabs}>
-              {PROPERTY_TYPES.map((type) => (
+            <div className={css.tabsContainer}>
+              {PROPERTY_TYPES.map((item) => (
                 <button
-                  key={type.id}
-                  className={`${css.tabBtn} ${activeProperty === type.id ? css.activeTab : ""}`}
-                  onClick={() => setActiveProperty(type.id)}
+                  key={item.id}
+                  type='button'
+                  className={`${css.tabBtn} ${activeProperty === item.id ? css.activeTab : ""}`}
+                  onClick={() => setActiveProperty(item.id)}
+                  style={{
+                    backgroundImage: `url(${item.bgImage})`,
+                    backgroundSize: item.bgSize,
+                  }}
                 >
-                  {type.icon}
-                  <span>{type.label}</span>
+                  {item.label}
                 </button>
               ))}
             </div>
 
-            {/* Картки основних пакетів */}
             <div className={css.priceGrid}>
-              <div className={css.priceCard}>
-                <h3>Підтримуюче</h3>
-                <p className={css.price}>{PRICE_DATA[activeProperty].regular}</p>
-                <p className={css.cardDesc}>Для тих, хто підтримує регулярну чистоту в оселі.</p>
-                <button className={css.cardBtn}>Замовити</button>
-              </div>
-
-              <div className={`${css.priceCard} ${css.featured}`}>
-                <div className={css.badge}>Популярно</div>
-                <h3>Генеральне</h3>
-                <p className={css.price}>{PRICE_DATA[activeProperty].general}</p>
-                <p className={css.cardDesc}>Повне очищення кожного сантиметра вашого простору.</p>
-                <button className={css.cardBtn}>Замовити</button>
-              </div>
-
-              <div className={css.priceCard}>
-                <h3>Після ремонту</h3>
-                <p className={css.price}>{PRICE_DATA[activeProperty].repair}</p>
-                <p className={css.cardDesc}>Спеціалізоване прибирання для видалення будпилу.</p>
-                <button className={css.cardBtn}>Замовити</button>
-              </div>
+              {SERVICES.map((service, index) => (
+                <div key={service.id} className={`${css.priceCard} ${index === 1 ? css.featured : ""}`}>
+                  {index === 1 && <div className={css.badge}>Популярно</div>}
+                  <h3>{service.title}</h3>
+                  <p className={css.price}>{service.prices[activeProperty]}</p>
+                  <p className={css.cardDesc}>{service.desc}</p>
+                  <button className={css.mainActionBtn}>Замовити прибирання</button>
+                </div>
+              ))}
             </div>
           </div>
         </section>
