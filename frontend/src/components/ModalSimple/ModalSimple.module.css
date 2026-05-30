@@ -38,7 +38,7 @@
   max-width: 560px;
   border: 1px solid rgba(85, 166, 166, 0.2);
   border-radius: 24px;
-  padding: 40px 32px;
+  padding: 24px 16px;
   position: relative;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   opacity: 0;
@@ -74,7 +74,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   width: 100%;
 }
 
@@ -117,26 +117,26 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  margin-bottom: 32px;
+  gap: 16px;
+  margin-bottom: 24px;
   text-align: center;
 }
 
 .thankYou {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: var(--dark-blue);
   line-height: 1.4;
 }
 
 .offerTitle {
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--dark-blue);
   line-height: 1.4;
 }
 
 .offerText {
-  font-size: 1.05rem;
+  font-size: 0.85rem;
   color: var(--dark-blue);
   opacity: 0.8;
   line-height: 1.5;
@@ -149,7 +149,15 @@
 }
 
 .logoMain {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--dark-blue);
+}
+
+.logoSub {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--dark-blue);
 }
 
 .actions {
@@ -160,12 +168,12 @@
 
 .waitBtn {
   width: 100%;
-  padding: 14px 24px;
+  padding: 10px 16px;
   background-color: transparent;
   color: var(--main-teal);
   border: 2px solid var(--main-teal);
   border-radius: var(--radius-lg);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   transition:
@@ -180,12 +188,12 @@
 
 .calcBtn {
   width: 100%;
-  padding: 14px 24px;
+  padding: 10px 16px;
   background-color: var(--main-teal);
   color: var(--bg-white);
   border: none;
   border-radius: var(--radius-lg);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   box-shadow: var(--shadow-md);
@@ -198,7 +206,40 @@
   transform: scale(1.1);
 }
 
-@media (min-width: 576px) {
+@media (min-width: 678px) {
+  .modal {
+    padding: 40px 32px;
+  }
+  .logoContainer {
+    margin-bottom: 32px;
+  }
+  .content {
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .thankYou {
+    font-size: 1.2rem;
+  }
+  .offerTitle {
+    font-size: 1.15rem;
+  }
+  .offerText {
+    font-size: 1.05rem;
+  }
+  .logoMain {
+    font-size: 1.1rem;
+  }
+  .logoSub {
+    font-size: 0.8rem;
+  }
+
+  .waitBtn,
+  .calcBtn {
+    padding: 14px 24px;
+    font-size: 1rem;
+  }
+
   .actions {
     flex-direction: row;
     justify-content: space-between;

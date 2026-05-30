@@ -59,19 +59,18 @@
   text-align: center; /* На телефоні краще виглядає по центру */
 }
 
-/* Дозволяємо довгому тексту в чеку переноситися на новий рядок */
 .label {
-  font-size: 0.95rem; /* Трохи менший шрифт */
+  font-size: 0.8rem;
   color: var(--dark-blue);
-  white-space: normal; /* ВИПРАВЛЕНО: Було nowrap. Це розпирало екран! */
-  max-width: 70%; /* Щоб текст не налізав на цифри */
+  white-space: normal;
+  max-width: 70%;
 }
 
 .value {
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--dark-blue);
-  white-space: nowrap; /* Сума нехай залишається в один рядок */
+  white-space: nowrap;
 }
 
 .totalLabel {
@@ -233,7 +232,7 @@
   transform: translateY(-2px);
 }
 
-@media (min-width: 576px) {
+@media (min-width: 768px) {
   .footerRow {
     flex-direction: row;
     justify-content: space-between;
@@ -243,5 +242,12 @@
   .buttonGroup {
     width: auto;
     justify-content: flex-end;
+  }
+  .label {
+    font-size: 1rem;
+  }
+
+  .value {
+    font-size: 1.05rem;
   }
 }
