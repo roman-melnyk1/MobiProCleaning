@@ -56,7 +56,7 @@ export default function Footer() {
                 <a href='tel:+380670000000'>+380670000000</a>
               </li>
               <li>
-                <a href='mailto:chikinclean@gmail.com'>chikinclean@gmail.com</a>
+                <a href='mailto:mobiprocleaning@gmail.com'>mobiprocleaning@gmail.com</a>
               </li>
               <li className={css.address}>м. Львів, вул. Солонка 52А</li>
             </ul>

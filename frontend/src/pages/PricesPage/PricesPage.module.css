@@ -223,3 +223,48 @@
     transform: scale(1.05);
   }
 }
+
+.additionalSection {
+  padding: 60px 0 100px;
+  background-color: var(--bg-white);
+}
+
+.additionalGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.additionalCard {
+  background: white;
+  padding: 20px 25px;
+  border-radius: 12px;
+  border: 1px solid var(--gray);
+  transition: 0.3s;
+}
+
+.additionalCard:hover {
+  border-color: var(--main-teal);
+}
+
+.addInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  color: var(--dark-blue);
+}
+
+.addPrice {
+  color: var(--main-teal);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+@media (min-width: 768px) {
+  .additionalGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

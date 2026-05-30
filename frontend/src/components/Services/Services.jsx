@@ -1,4 +1,6 @@
 import css from "./Services.module.css";
+import { Link } from "react-router-dom";
+
 import { ArrowUpRight } from "lucide-react";
 import desktopHero from "../../assets/photo/test.webp";
 
@@ -81,19 +83,19 @@ export default function Services() {
 
               <div className={css.cardBody}>
                 <p className={css.price}>{service.price}</p>
-                <a href={service.link} className={css.detailsBtn}>
+                <Link to='/prices' className={css.detailsBtn}>
                   Детальніше
-                </a>
+                </Link>
               </div>
             </div>
           ))}
         </div>
 
         <div className={css.allServicesWrapper}>
-          <a href='#' className={css.allServicesBtn}>
+          <Link to='/prices' className={css.allServicesBtn}>
             Подивитися всі додаткові послуги
             <ArrowUpRight className={css.arrowIcon} size={24} />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

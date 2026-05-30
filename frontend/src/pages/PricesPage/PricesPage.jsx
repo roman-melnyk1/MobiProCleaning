@@ -1,6 +1,7 @@
 import { useState } from "react";
 import css from "./PricesPage.module.css";
 import { Check, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import flatImg from "../../assets/photo/apartment.webp";
 import houseImg from "../../assets/photo/house.webp";
 import officeImg from "../../assets/photo/office.webp";
@@ -44,6 +45,17 @@ const COMPARISON_FEATURES = [
   { name: "Глибоке миття сантехніки (видалення нальоту)", reg: true, gen: true, rep: true },
 ];
 
+const ADDITIONAL_SERVICES = [
+  { name: "Миття вікон (з двох сторін)", price: "від 120₴ / шт", unit: "шт" },
+  { name: "Хімчистка дивана (2-місний)", price: "від 600₴", unit: "шт" },
+  { name: "Хімчистка матраца (двоспальний)", price: "від 700₴", unit: "шт" },
+  { name: "Прибирання паркомісця", price: "від 350₴", unit: "місце" },
+  { name: "Миття духовки / мікрохвильовки", price: "від 250₴", unit: "шт" },
+  { name: "Миття холодильника (всередині)", price: "від 300₴", unit: "шт" },
+  { name: "Миття витяжки від жиру", price: "від 200₴", unit: "шт" },
+  { name: "Чистка плінтусів (глибока)", price: "від 15₴ / м.п.", unit: "м.п." },
+];
+
 export default function PricesPage() {
   const [activeProperty, setActiveProperty] = useState("flat");
 
@@ -79,7 +91,27 @@ export default function PricesPage() {
                   <h3>{service.title}</h3>
                   <p className={css.price}>{service.prices[activeProperty]}</p>
                   <p className={css.cardDesc}>{service.desc}</p>
-                  <button className={css.mainActionBtn}>Замовити прибирання</button>
+
+                  {/* Тут переадресація на головну до форми */}
+                  <Link to='/#' className={css.mainActionBtn}>
+                    Замовити прибирання
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={css.additionalSection} id='additionalSection'>
+          <div className='container'>
+            <h2 className={css.sectionTitle}>Додаткові послуги</h2>
+            <div className={css.additionalGrid}>
+              {ADDITIONAL_SERVICES.map((service, i) => (
+                <div key={i} className={css.additionalCard}>
+                  <div className={css.addInfo}>
+                    <span>{service.name}</span>
+                    <span className={css.addPrice}>{service.price}</span>
+                  </div>
                 </div>
               ))}
             </div>
