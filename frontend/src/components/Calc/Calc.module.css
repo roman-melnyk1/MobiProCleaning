@@ -20,15 +20,6 @@
   margin: 0 auto;
 }
 
-/* На ПК та планшетах робимо 2 колонки */
-@media (min-width: 1024px) {
-  .splitLayout {
-    grid-template-columns: 1.1fr 0.9fr; /* Форма трохи ширша за інфо-панель */
-    gap: 40px;
-    align-items: start;
-  }
-}
-
 /* --- ЛІВА КОЛОНКА: ФОРМА --- */
 .formCard {
   width: 100%;
@@ -104,32 +95,32 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  background-color: rgba(22, 38, 76, 0.03); /* Можна замінити на var(--bg-gray), якщо є */
+  padding: 12px 16px;
+  background-color: rgba(22, 38, 76, 0.03);
   border-radius: var(--radius-md);
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .priceLabel {
-  font-size: 15px;
+  font-size: 0.75rem;
   color: var(--main-teal-opacity);
 }
 
 .priceValue {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--dark-blue);
 }
 
 .submitBtn {
-  margin-top: 10px;
+  margin-top: 16px;
   width: 100%;
   background-color: var(--main-teal);
   color: var(--bg-white);
   border: none;
   border-radius: var(--radius-md);
-  padding: 1rem;
-  font-size: 1.5rem;
+  padding: 12px;
+  font-size: 1.15rem;
   font-weight: 600;
   cursor: pointer;
   box-shadow: var(--shadow-md);
@@ -140,7 +131,7 @@
 
 .submitBtn:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md); /* Якщо є змінна для hover-тіні, можна замінити тут */
+  box-shadow: var(--shadow-md);
 }
 
 /* --- ПРАВА КОЛОНКА: ІНФОРМАЦІЯ ПРО ПАКЕТ --- */
@@ -199,4 +190,30 @@
   padding: 20px;
   border: 1px dashed var(--main-teal-opacity);
   border-radius: var(--radius-md);
+}
+
+@media (min-width: 768px) {
+  .priceBlock {
+    padding: 15px 20px;
+    margin-top: 12px;
+  }
+
+  .priceLabel {
+    font-size: 15px;
+  }
+
+  .priceValue {
+    font-size: 1.5rem;
+  }
+
+  .submitBtn {
+    padding: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .splitLayout {
+    grid-template-columns: 1.1fr 0.9fr; /* Форма трохи ширша за інфо-панель */
+    gap: 40px;
+    align-items: start;
+  }
 }
