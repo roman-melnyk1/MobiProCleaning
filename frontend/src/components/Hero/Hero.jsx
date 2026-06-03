@@ -21,13 +21,13 @@ export default function Hero() {
       id: "Квартира",
       label: "Квартира",
       bgImage: flatImg,
-      bgSize: "40%",
+      bgSize: "35%",
     },
     {
       id: "Будинок",
       label: "Будинок",
       bgImage: houseImg,
-      bgSize: "40%",
+      bgSize: "35%",
     },
     {
       id: "Офіс або ТЦ",
