@@ -2,10 +2,10 @@ import { Link } from "react-router-dom"; // Імпортуємо Link
 import css from "./Footer.module.css";
 import photo from "../../assets/photo/MobiProCleaning.png";
 
-import facebookIcon from "../../assets/svg/facebook.svg";
-import viberIcon from "../../assets/svg/viber.svg";
-import telegramIcon from "../../assets/svg/telegram.svg";
-import instagramIcon from "../../assets/svg/instagram.svg";
+// import facebookIcon from "../../assets/svg/facebook.svg";
+// import viberIcon from "../../assets/svg/viber.svg";
+// import telegramIcon from "../../assets/svg/telegram.svg";
+// import instagramIcon from "../../assets/svg/instagram.svg";
 
 export default function Footer() {
   return (
@@ -16,12 +16,12 @@ export default function Footer() {
           <div className={css.logoContainer}>
             <div className={css.logoLeft}>
               <Link to='/'>
-                <img src={photo} alt='MobiProCleaning' width='80' />
+                <img src={photo} alt='MobiProCleaning' width='100' />
               </Link>
             </div>
             <div className={css.separator}></div>
             <div className={css.logoRight}>
-              <span className={css.logoText1}>Мобільно-Професійний клінінг</span>
+              <span className={css.logoText1}>мобільно-професійний клінінг</span>
               <span className={css.logoText2}>ветеранський бізнес</span>
             </div>
           </div>
@@ -53,17 +53,17 @@ export default function Footer() {
             <h4 className={css.title}>Контакти</h4>
             <ul className={css.list}>
               <li>
-                <a href='tel:+380670000000'>+380670000000</a>
+                <a href='tel:+380975565852'>+38 097 556 5852</a>
               </li>
               <li>
-                <a href='mailto:mobiprocleaning@gmail.com'>mobiprocleaning@gmail.com</a>
+                <a href='mailto:mpclviv@gmail.com'>mpclviv@gmail.com</a>
               </li>
-              <li className={css.address}>м. Львів, вул. Червоної Калини</li>
+              <li className={css.address}>м. Львів, вул. Трускавецька, 2б</li>
             </ul>
           </div>
 
           {/* 4. Соцмережі (Залишаємо <a> для зовнішніх посилань) */}
-          <div className={css.socialsCol}>
+          {/* <div className={css.socialsCol}>
             <div className={css.socialsWrapper}>
               <a
                 href='https://facebook.com'
@@ -96,11 +96,11 @@ export default function Footer() {
                 <img src={telegramIcon} alt='Telegram' className={css.socialIcon} />
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className={css.bottomSection}>
-          <p>© 2026 MobiCleanPro</p>
+          <p>© 2026 MobiProCleaning</p>
           <p className={css.devCredit}>Design & Dev by Roman Melnyk</p>
         </div>
       </div>

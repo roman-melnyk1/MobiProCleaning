@@ -30,7 +30,7 @@ export default function Hero() {
       bgSize: "40%",
     },
     {
-      id: "Офіс або ТЦ",
+      id: "Бізнес",
       label: "Офіс або ТЦ",
       bgImage: officeImg,
       bgSize: "30%",

@@ -27,12 +27,12 @@ export default function Header() {
           <div className={css.logoContainer}>
             <div className={css.logoLeft}>
               <Link to='/'>
-                <img src={photo} alt='MobiProCleaning' width='80' />
+                <img src={photo} alt='MobiProCleaning' width='100' />
               </Link>
             </div>
             <div className={css.separator}></div>
             <div className={css.logoRight}>
-              <span className={css.logoText1}>Мобільно-Професійний клінінг</span>
+              <span className={css.logoText1}>мобільно-професійний клінінг</span>
               <span className={css.logoText2}>ветеранський бізнес</span>
             </div>
           </div>
