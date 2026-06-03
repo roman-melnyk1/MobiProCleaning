@@ -38,7 +38,7 @@ export default function Hero() {
   ];
 
   return (
-    <section className={css.hero}>
+    <section className={css.hero} id='hero'>
       <div className='container'>
         <div className={css.innerHero}>
           <div className={css.content}>

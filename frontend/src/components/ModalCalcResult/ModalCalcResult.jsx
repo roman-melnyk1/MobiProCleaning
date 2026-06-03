@@ -13,7 +13,7 @@ const EXTRA_PRICES = {
   facade: 800,
 };
 
-export default function ModalCalcResult({ isOpen, onClose, onOrder, calcData }) {
+export default function ModalCalcResult({ isOpen, onClose, calcData }) {
   const {
     propertyType = "Квартира",
     propertySize = 0,
@@ -94,9 +94,25 @@ export default function ModalCalcResult({ isOpen, onClose, onOrder, calcData }) 
           </div>
 
           <div className={css.buttonGroup}>
-            <button type='button' className={css.orderBtn} onClick={onOrder}>
+            <button
+              type='button'
+              className={css.orderBtn}
+              onClick={(e) => {
+                e.preventDefault();
+
+                onClose();
+
+                setTimeout(() => {
+                  const element = document.getElementById("hero");
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                }, 100);
+              }}
+            >
               Замовити
             </button>
+
             <button type='button' className={css.downloadBtn} aria-label='Завантажити чек'>
               <Download size={22} />
             </button>
