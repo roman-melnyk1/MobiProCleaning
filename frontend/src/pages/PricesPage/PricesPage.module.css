@@ -136,7 +136,7 @@
 }
 
 .price {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--main-teal);
   margin-bottom: 16px;
@@ -260,7 +260,7 @@
 .addPrice {
   color: var(--main-teal);
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 @media (min-width: 768px) {
