@@ -15,6 +15,7 @@ export default function Hero() {
     try {
       const payload = {
         access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+        botcheck: values.botcheck,
         subject: "🚨 НОВА ЗАЯВКА",
         from_name: "Сайт MobiProCleaning",
         "Тип приміщення": values.propertyType || "Не вказано",
@@ -89,6 +90,9 @@ export default function Hero() {
               {/* Додано isSubmitting з Formik */}
               {({ errors, touched, values, setFieldValue, isSubmitting }) => (
                 <Form className={css.form}>
+                  <div style={{ display: "none" }}>
+                    <Field type='checkbox' name='botcheck' />
+                  </div>
                   <div className={css.tabsContainer}>
                     {propertyTypes.map((item) => (
                       <button

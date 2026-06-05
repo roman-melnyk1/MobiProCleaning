@@ -1,6 +1,7 @@
 import * as Yup from "yup";
 
 export const initialValues = {
+  botcheck: false,
   propertyType: "",
   firstName: "",
   lastName: "",
