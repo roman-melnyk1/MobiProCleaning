@@ -35,7 +35,6 @@ export default function Hero() {
       });
 
       const data = await response.json();
-
       if (data.success) {
         setShowModal(true);
         resetForm();
