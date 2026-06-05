@@ -10,10 +10,43 @@ import officeImg from "../../assets/photo/office.webp";
 
 export default function Hero() {
   const [showModal, setShowModal] = useState(false);
-  const handleSubmit = (values, { resetForm }) => {
-    console.log("Дані форми:", values);
-    setShowModal(true);
-    resetForm();
+
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+    try {
+      const payload = {
+        access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+        subject: "🚨 НОВА ЗАЯВКА",
+        from_name: "Сайт MobiProCleaning",
+        "Тип приміщення": values.propertyType || "Не вказано",
+        "Ім'я клієнта": values.firstName,
+        Прізвище: values.lastName,
+        Телефон: values.phone,
+        Адреса: values.address || "Не вказано",
+      };
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setShowModal(true);
+        resetForm();
+      } else {
+        alert("Сталася помилка при відправці. Спробуйте ще раз.");
+      }
+    } catch (error) {
+      console.error("Помилка відправки:", error);
+      alert("Помилка з'єднання. Перевірте підключення до інтернету.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const propertyTypes = [
@@ -53,7 +86,8 @@ export default function Hero() {
 
           <div className={css.formWrapper}>
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-              {({ errors, touched, values, setFieldValue }) => (
+              {/* Додано isSubmitting з Formik */}
+              {({ errors, touched, values, setFieldValue, isSubmitting }) => (
                 <Form className={css.form}>
                   <div className={css.tabsContainer}>
                     {propertyTypes.map((item) => (
@@ -98,8 +132,13 @@ export default function Hero() {
                       <ErrorMessage name='address' component='div' className={css.errorText} />
                     </div>
 
-                    <button type='submit' className={css.submitBtn}>
-                      Надіслати заявку
+                    <button
+                      type='submit'
+                      className={css.submitBtn}
+                      disabled={isSubmitting}
+                      style={{ opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? "not-allowed" : "pointer" }}
+                    >
+                      {isSubmitting ? "Відправлення..." : "Надіслати заявку"}
                     </button>
                   </div>
                 </Form>
