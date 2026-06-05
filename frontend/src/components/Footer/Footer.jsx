@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"; // Імпортуємо Link
 import css from "./Footer.module.css";
-import photo from "../../assets/photo/MobiProCleaning.png";
+import photo from "../../assets/photo/MobiProCleaning.webp";
 
 // import facebookIcon from "../../assets/svg/facebook.svg";
 // import viberIcon from "../../assets/svg/viber.svg";
