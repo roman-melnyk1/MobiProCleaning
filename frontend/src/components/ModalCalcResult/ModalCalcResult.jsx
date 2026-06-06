@@ -37,7 +37,7 @@ export default function ModalCalcResult({ isOpen, onClose, calcData }) {
         </button>
 
         <div className={css.logoContainer}>
-          <img src='/MobiProCleaning.webp' alt='MobiProCleaningLogo' width='80' />
+          <img src='/MobiProCleaning.webp' alt='MobiProCleaningLogo' width='100' />
           <div className={css.logoRight}>
             <span>Мобільно-Професійний клінінг</span>
             <span className={css.logoTagline}>ветеранський бізнес</span>

@@ -38,7 +38,7 @@ export default function Header() {
 
           <nav className={`${css.nav} ${isOpen ? css.navActive : ""}`}>
             <div className={css.navLogoMobile}>
-              <img src='/MobiProCleaning.webp' alt='MobiProCleaning' width='90' />
+              <img src='/MobiProCleaning.webp' alt='MobiProCleaning' width='100' />
             </div>
 
             <ul className={css.navList}>
