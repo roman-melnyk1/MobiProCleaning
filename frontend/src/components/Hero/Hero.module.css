@@ -1,7 +1,8 @@
 .hero {
   min-height: 700px;
   padding-top: 75px;
-  background-image: url("../../assets/photo/hero.webp");
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.7)), url("../../assets/photo/hero.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
