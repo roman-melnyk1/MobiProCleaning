@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom"; // Імпортуємо Link
 import css from "./Footer.module.css";
-import photo from "./MobiProCleaning.webp";
 
 // import facebookIcon from "../../assets/svg/facebook.svg";
 // import viberIcon from "../../assets/svg/viber.svg";
@@ -16,7 +15,7 @@ export default function Footer() {
           <div className={css.logoContainer}>
             <div className={css.logoLeft}>
               <Link to='/'>
-                <img src={photo} alt='MobiProCleaning' width='100' />
+                <img src='/MobiProCleaning.webp' alt='MobiProCleaning' width='100' />
               </Link>
             </div>
             <div className={css.separator}></div>

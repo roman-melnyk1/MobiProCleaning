@@ -1,5 +1,4 @@
 import css from "./ModalSimple.module.css";
-import photo from "./MobiProCleaning.webp";
 
 export default function ModalSimple({ isOpen, onClose, onCalculate, values }) {
   return (
@@ -13,7 +12,7 @@ export default function ModalSimple({ isOpen, onClose, onCalculate, values }) {
 
         <div className={css.logoContainer}>
           <div className={css.logoImgWrapper}>
-            <img src={photo} alt='MobiPro Cleaning' className={css.logoImg} width='100' />
+            <img src='/MobiProCleaning.webp' alt='MobiPro Cleaning' className={css.logoImg} width='100' />
           </div>
           <div className={css.logoTextGroup}>
             <span className={css.logoMain}>Мобільно-Професійний клінінг</span>
