@@ -1,6 +1,6 @@
 import css from "./ModalCalcResult.module.css";
 import { Download } from "lucide-react";
-import photo from "../../assets/photo/MobiProCleaning.webp";
+import photo from "./MobiProCleaning.webp";
 
 const EXTRA_PRICES = {
   "windows-season": 200,

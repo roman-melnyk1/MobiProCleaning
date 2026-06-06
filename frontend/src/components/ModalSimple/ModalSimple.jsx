@@ -1,5 +1,5 @@
 import css from "./ModalSimple.module.css";
-import photo from "../../assets/photo/MobiProCleaning.webp";
+import photo from "./MobiProCleaning.webp";
 
 export default function ModalSimple({ isOpen, onClose, onCalculate, values }) {
   return (

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import css from "./Header.module.css";
-import photo from "../../assets/photo/MobiProCleaning.webp";
+import photo from "./MobiProCleaning.webp";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);

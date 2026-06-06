@@ -1,8 +1,7 @@
 .hero {
   min-height: 700px;
   padding-top: 75px;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.7)), url("../../assets/photo/hero.webp");
+  background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.7)), url("/hero.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -117,7 +116,7 @@
   .hero {
     background-image:
       linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 35%, rgba(255, 255, 255, 0) 60%),
-      url("../../assets/photo/hero.webp");
+      url("/hero.webp");
   }
   .title {
     font-size: 3rem;
