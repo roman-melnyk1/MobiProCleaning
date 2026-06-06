@@ -65,15 +65,15 @@ export default function Header() {
               </li>
             </ul>
 
-            <button type='button' className={css.contact}>
+            <a href='tel:+380975565852' className={css.contact}>
               Зв'яжіться з нами
-            </button>
+            </a>
           </nav>
 
           <div className={css.contactWrapper}>
-            <button type='button' className={css.contactDesktop}>
+            <a href='tel:+380975565852' className={css.contactDesktop}>
               Зв'яжіться з нами
-            </button>
+            </a>
           </div>
 
           <button

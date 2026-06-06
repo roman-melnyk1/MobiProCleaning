@@ -4,6 +4,7 @@ import Hero from "../../components/Hero/Hero";
 import About from "../../components/About/About";
 import Services from "../../components/Services/Services";
 import Calc from "../../components/Calc/Calc";
+import SEO from "../../components/SEO/SEO";
 
 export default function Home() {
   const location = useLocation();
@@ -29,10 +30,16 @@ export default function Home() {
   }, [location]);
   return (
     <>
-      <Hero></Hero>
-      <About></About>
-      <Services></Services>
-      <Calc></Calc>
+      <SEO
+        title='Мобільний клінінг у вашому місті | MobiProCleaning'
+        description='Професійний клінінг квартир, будинків та офісів. Еко-засоби, перевірений персонал, гарантія якості. Замовляйте розрахунок вартості онлайн!'
+      />
+      <main>
+        <Hero></Hero>
+        <About></About>
+        <Services></Services>
+        <Calc></Calc>
+      </main>
     </>
   );
 }

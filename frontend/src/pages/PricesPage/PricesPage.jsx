@@ -2,6 +2,7 @@ import { useState } from "react";
 import css from "./PricesPage.module.css";
 import { Check, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import SEO from "../../components/SEO/SEO";
 import flatImg from "../../assets/photo/apartment.webp";
 import houseImg from "../../assets/photo/house.webp";
 import officeImg from "../../assets/photo/office.webp";
@@ -61,6 +62,10 @@ export default function PricesPage() {
 
   return (
     <>
+      <SEO
+        title='Ціни на послуги прибирання | MobiProCleaning'
+        description='Актуальний прайс-лист на генеральне прибирання, миття вікон та хімчистку меблів. Прозорі ціни без прихованих платежів.'
+      />
       <main className={css.main}>
         <section className={css.pricesHeader}>
           <div className='container'>
