@@ -43,7 +43,7 @@ const servicesData = [
   {
     id: 6,
     title: "Миття вікон та вітрин",
-    price: "Від 120грн/шт",
+    price: "Від 300грн/м²",
     image: "/windows-clean.webp",
     link: "#",
   },

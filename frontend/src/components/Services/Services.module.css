@@ -113,6 +113,9 @@
 }
 
 @media (min-width: 1024px) {
+  .card {
+    min-width: 250px;
+  }
   .sectionTitle {
     font-size: 2.5rem;
     margin-bottom: 48px;
