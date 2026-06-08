@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mobi-pro-cleaning.vercel.app/sitemap.xml
+Sitemap: https://mobiprocleaning.com.ua/sitemap.xml

@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 
-export default function SEO({ title, description, url = "https://mobi-pro-cleaning.vercel.app" }) {
+export default function SEO({ title, description, url = "https://mobiprocleaning.com.ua" }) {
   return (
     <Helmet>
       <title>{title}</title>
