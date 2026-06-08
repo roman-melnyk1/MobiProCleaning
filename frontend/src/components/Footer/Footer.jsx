@@ -11,7 +11,6 @@ export default function Footer() {
     <footer className={css.footer}>
       <div className='container'>
         <div className={css.topSection}>
-          {/* 1. Логотип */}
           <div className={css.logoContainer}>
             <div className={css.logoLeft}>
               <Link to='/'>
