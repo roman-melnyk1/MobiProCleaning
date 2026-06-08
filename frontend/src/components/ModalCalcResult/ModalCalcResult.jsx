@@ -1,5 +1,5 @@
 import css from "./ModalCalcResult.module.css";
-import { Download } from "lucide-react";
+// import { Download } from "lucide-react";
 
 const EXTRA_PRICES = {
   "windows-season": 200,
@@ -111,10 +111,10 @@ export default function ModalCalcResult({ isOpen, onClose, calcData }) {
             >
               Замовити
             </button>
-
+            {/* 
             <button type='button' className={css.downloadBtn} aria-label='Завантажити чек'>
               <Download size={22} />
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
