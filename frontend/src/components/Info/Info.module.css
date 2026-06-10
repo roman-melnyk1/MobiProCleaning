@@ -27,7 +27,7 @@
   font-weight: 600;
   font-size: 0.9rem;
   width: fit-content;
-  margin-bottom: 16px;
+  margin: 32px auto 16px auto;
 }
 
 .title {
