@@ -4,6 +4,7 @@ import Hero from "../../components/Hero/Hero";
 import About from "../../components/About/About";
 import Services from "../../components/Services/Services";
 import Calc from "../../components/Calc/Calc";
+import Review from "../../components/Review/Review";
 import SEO from "../../components/SEO/SEO";
 
 export default function Home() {
@@ -38,6 +39,7 @@ export default function Home() {
         <Hero></Hero>
         <About></About>
         <Services></Services>
+        <Review></Review>
         <Calc></Calc>
       </main>
     </>
