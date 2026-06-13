@@ -157,10 +157,13 @@
     align-items: flex-start;
     text-align: left;
     justify-content: space-between;
+    gap: 40px;
   }
 
   .logoCol {
     flex: 1.5; /* Логотип займає трохи більше місця */
+    display: flex;
+    justify-content: flex-start;
   }
 
   .logoText1 {
@@ -170,9 +173,24 @@
     font-size: 0.9rem;
   }
 
-  .menuCol,
+  .menuCol {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
   .contactCol {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .menuCol .list {
+    align-items: center; /* Центрує посилання одне під одним */
   }
 
   .socialsCol {
