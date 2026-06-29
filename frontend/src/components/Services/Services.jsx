@@ -54,9 +54,7 @@ export default function Services() {
 
                 <div className={css.cardBody}>
                   {/* Умова: якщо це головна послуга — пишемо "Від ...", якщо додаткова — виводимо як є */}
-                  <p className={css.price}>
-                    {service.isMainService ? `Від ${service.priceFlat}` : service.singlePrice}
-                  </p>
+                  <p className={css.price}>{service.isMainService ? `${service.priceFlat}` : service.singlePrice}</p>
                   <Link to='/prices' className={css.detailsBtn}>
                     Детальніше
                   </Link>
