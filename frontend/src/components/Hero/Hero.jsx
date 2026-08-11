@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { initialValues, validationSchema } from "./formConfig";
 import ModalSimple from "../ModalSimple/ModalSimple";
+import { trackLead } from "../../utils/metaPixel";
 
 import flatImg from "../../assets/photo/apartment.webp";
 import houseImg from "../../assets/photo/house.webp";
@@ -36,6 +37,12 @@ export default function Hero() {
 
       const data = await response.json();
       if (data.success) {
+        trackLead({
+          firstName: values.firstName,
+          lastName: values.lastName,
+          phone: values.phone,
+          propertyType: values.propertyType,
+        });
         setShowModal(true);
         resetForm();
       } else {
