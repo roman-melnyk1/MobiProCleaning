@@ -51,6 +51,11 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   z-index: 100;
 
+  /* Закритий список має нульову висоту — інакше довгий прихований список
+     розтягує сторінку і знизу з'являється порожній простір */
+  max-height: 0;
+  overflow: hidden;
+
   /* Початковий стан для анімації */
   opacity: 0;
   visibility: hidden;
@@ -62,6 +67,9 @@
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+  max-height: min(320px, 50vh); /* довгий список прокручується всередині */
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .option {

@@ -32,7 +32,7 @@ const INCLUDED_SERVICES = {
 };
 
 export default function Calculator() {
-  const [data, setData] = useState({ cleaning: [], additional: [] });
+  const [data, setData] = useState({ cleaning: [], additional: [], drycleaning: [] });
   const [isLoading, setIsLoading] = useState(true);
 
   // Стейт форми
@@ -41,7 +41,9 @@ export default function Calculator() {
   const [rooms, setRooms] = useState(null);
   const [bathrooms, setBathrooms] = useState(null);
   const [cleaningType, setCleaningType] = useState(null);
-  const [extras, setExtras] = useState([]); // Тут тепер повні об'єкти з isPerMeter
+  const [extrasAdditional, setExtrasAdditional] = useState([]); // обрані з дропдауну «Додаткові послуги»
+  const [extrasDry, setExtrasDry] = useState([]); // обрані з дропдауну «Хімчистка»
+  const extras = [...extrasAdditional, ...extrasDry];
   const [extraQuantities, setExtraQuantities] = useState({}); // м² або шт для кожної додаткової послуги
   const [variantQty, setVariantQty] = useState({}); // { [послуга]: { [_key варіанту]: кількість } }
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -59,26 +61,28 @@ export default function Calculator() {
       category
     }`;
     client.fetch(query).then((res) => {
+      const toExtra = (s) => ({
+        value: s.id,
+        label: s.title, // назва в дропдауні
+        receiptLabel: s.category === "drycleaning" ? `Хімчистка: ${s.title.toLowerCase()}` : s.title, // назва в чеку
+        price: s.basePrice,
+        isPerMeter: s.isPerMeter,
+        isPerPiece: s.isPerPiece,
+        variants: s.variants || [],
+      });
+      const extrasAll = res.filter((s) => !s.isMainService);
+
       setData({
-        cleaning: res.filter((s) => s.isMainService).map((s) => ({
+        cleaning: res
+          .filter((s) => s.isMainService)
+          .map((s) => ({
             value: s.id,
             label: s.title,
             price: s.basePrice,
             priceHouse: s.basePriceHouse ?? s.basePrice,
           })),
-        // Зберігаємо isPerMeter для кожної додаткової послуги
-        additional: res
-          .filter((s) => !s.isMainService)
-          // Спершу додаткові послуги, потім хімчистка (sort стабільний — порядок усередині зберігається)
-          .sort((a, b) => (a.category === "drycleaning") - (b.category === "drycleaning"))
-          .map((s) => ({
-            value: s.id,
-            label: s.category === "drycleaning" ? `Хімчистка: ${s.title.toLowerCase()}` : s.title,
-            price: s.basePrice,
-            isPerMeter: s.isPerMeter,
-            isPerPiece: s.isPerPiece,
-            variants: s.variants || [],
-          })),
+        additional: extrasAll.filter((s) => s.category !== "drycleaning").map(toExtra),
+        drycleaning: extrasAll.filter((s) => s.category === "drycleaning").map(toExtra),
       });
       setIsLoading(false);
     });
@@ -91,14 +95,14 @@ export default function Calculator() {
         .map((v) => ({ v, qty: variantQty[ex.value]?.[v._key] || 0 }))
         .filter(({ qty }) => qty > 0)
         .map(({ v, qty }) => ({
-          label: `${ex.label} ${v.label}`,
+          label: `${ex.receiptLabel} ${v.label}`,
           details: qty > 1 ? ` (${qty} шт × ${v.price} ₴)` : "",
           totalPrice: v.price * qty,
         }));
       const customArea = ex.isPerMeter ? extraQuantities[ex.value] || 0 : 0;
       if (customArea > 0) {
         lines.push({
-          label: `${ex.label} (інший розмір)`,
+          label: `${ex.receiptLabel} (інший розмір)`,
           details: ` (${customArea} м² × ${ex.price} ₴)`,
           totalPrice: Math.round(customArea * ex.price),
         });
@@ -112,10 +116,10 @@ export default function Calculator() {
       let details = "";
       if (qty > 1) details = ` (${qty} ${unit} × ${ex.price} ₴)`;
       else if (ex.isPerMeter) details = ` (${ex.price} ₴/м²)`;
-      return [{ label: ex.label, details, totalPrice: ex.price * qty }];
+      return [{ label: ex.receiptLabel, details, totalPrice: ex.price * qty }];
     }
 
-    return [{ label: ex.label, details: "", totalPrice: ex.price }];
+    return [{ label: ex.receiptLabel, details: "", totalPrice: ex.price }];
   };
 
   const extraLines = extras.flatMap(getExtraLines);
@@ -157,6 +161,78 @@ export default function Calculator() {
     // Передаємо вже пораховані ціни та кількість для кожного додатку
     selectedExtras: extraLines,
     totalPrice: totalPrice,
+  };
+
+  // Поля під обраною послугою: варіанти (розміри вікон), площа (м²) або кількість (шт)
+  const renderExtraInputs = (ex) => {
+    if (ex.variants.length > 0) {
+      return (
+        <div key={ex.value} className={css.variantBox}>
+          <span className={css.extraLabel}>«{ex.label}»: оберіть розмір і кількість</span>
+          {ex.variants.map((v) => (
+            <label key={v._key} className={css.variantRow}>
+              <span className={css.variantName}>{v.label}</span>
+              <span className={css.variantPrice}>{v.price} ₴</span>
+              <input
+                type='number'
+                min='0'
+                inputMode='numeric'
+                placeholder='0'
+                className={css.qtyInput}
+                value={variantQty[ex.value]?.[v._key] || ""}
+                onChange={(e) =>
+                  setVariant(ex.value, v._key, Math.max(0, Number.parseInt(e.target.value) || 0))
+                }
+              />
+            </label>
+          ))}
+          {ex.isPerMeter && (
+            <label className={css.variantRow}>
+              <span className={css.variantName}>Інший розмір, м²</span>
+              <span className={css.variantPrice}>{ex.price} ₴/м²</span>
+              <input
+                type='number'
+                min='0'
+                step='0.1'
+                inputMode='decimal'
+                placeholder='0'
+                className={css.qtyInput}
+                value={extraQuantities[ex.value] || ""}
+                onChange={(e) =>
+                  setExtraQuantities({
+                    ...extraQuantities,
+                    [ex.value]: Math.max(0, Number.parseFloat(e.target.value) || 0),
+                  })
+                }
+              />
+            </label>
+          )}
+        </div>
+      );
+    }
+
+    if (!ex.isPerMeter && !ex.isPerPiece) return null;
+
+    return (
+      <div key={ex.value} className={css.inputWrapper}>
+        <label className={css.extraLabel}>
+          {ex.isPerMeter ? `Введіть площу «${ex.label}» (м²):` : `Кількість «${ex.label}» (шт):`}
+        </label>
+        <input
+          type='number'
+          min='1'
+          inputMode='numeric'
+          className={css.input}
+          value={extraQuantities[ex.value] || 1}
+          onChange={(e) =>
+            setExtraQuantities({
+              ...extraQuantities,
+              [ex.value]: Math.max(1, Number.parseInt(e.target.value) || 1),
+            })
+          }
+        />
+      </div>
+    );
   };
 
   if (isLoading) return <div className='container'>Завантаження...</div>;
@@ -223,80 +299,19 @@ export default function Calculator() {
                 options={data.additional}
                 placeholder='Додаткові послуги'
                 isMulti={true}
-                onChange={setExtras}
+                onChange={setExtrasAdditional}
               />
+              {extrasAdditional.map(renderExtraInputs)}
 
-              {/* Додаткові поля для обраних послуг: варіанти (розміри вікон), площа або кількість */}
-              {extras.map((ex) => {
-                if (ex.variants.length > 0) {
-                  return (
-                    <div key={ex.value} className={css.variantBox}>
-                      <span className={css.extraLabel}>«{ex.label}»: оберіть розмір і кількість</span>
-                      {ex.variants.map((v) => (
-                        <label key={v._key} className={css.variantRow}>
-                          <span className={css.variantName}>{v.label}</span>
-                          <span className={css.variantPrice}>{v.price} ₴</span>
-                          <input
-                            type='number'
-                            min='0'
-                            inputMode='numeric'
-                            placeholder='0'
-                            className={css.qtyInput}
-                            value={variantQty[ex.value]?.[v._key] || ""}
-                            onChange={(e) =>
-                              setVariant(ex.value, v._key, Math.max(0, Number.parseInt(e.target.value) || 0))
-                            }
-                          />
-                        </label>
-                      ))}
-                      {ex.isPerMeter && (
-                        <label className={css.variantRow}>
-                          <span className={css.variantName}>Інший розмір, м²</span>
-                          <span className={css.variantPrice}>{ex.price} ₴/м²</span>
-                          <input
-                            type='number'
-                            min='0'
-                            step='0.1'
-                            inputMode='decimal'
-                            placeholder='0'
-                            className={css.qtyInput}
-                            value={extraQuantities[ex.value] || ""}
-                            onChange={(e) =>
-                              setExtraQuantities({
-                                ...extraQuantities,
-                                [ex.value]: Math.max(0, Number.parseFloat(e.target.value) || 0),
-                              })
-                            }
-                          />
-                        </label>
-                      )}
-                    </div>
-                  );
-                }
-
-                if (!ex.isPerMeter && !ex.isPerPiece) return null;
-
-                return (
-                  <div key={ex.value} className={css.inputWrapper}>
-                    <label className={css.extraLabel}>
-                      {ex.isPerMeter ? `Введіть площу «${ex.label}» (м²):` : `Кількість «${ex.label}» (шт):`}
-                    </label>
-                    <input
-                      type='number'
-                      min='1'
-                      inputMode='numeric'
-                      className={css.input}
-                      value={extraQuantities[ex.value] || 1}
-                      onChange={(e) =>
-                        setExtraQuantities({
-                          ...extraQuantities,
-                          [ex.value]: Math.max(1, Number.parseInt(e.target.value) || 1),
-                        })
-                      }
-                    />
-                  </div>
-                );
-              })}
+              {data.drycleaning.length > 0 && (
+                <CustomSelect
+                  options={data.drycleaning}
+                  placeholder='Хімчистка меблів'
+                  isMulti={true}
+                  onChange={setExtrasDry}
+                />
+              )}
+              {extrasDry.map(renderExtraInputs)}
 
               <div className={css.priceBlock}>
                 <span className={css.priceLabel}>Орієнтовна вартість:</span>
