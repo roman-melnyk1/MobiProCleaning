@@ -38,6 +38,9 @@ export default function Hero() {
       const data = await response.json();
       if (data.success) {
         trackLead({
+          firstName: values.firstName,
+          lastName: values.lastName,
+          phone: values.phone,
           propertyType: values.propertyType,
         });
         setShowModal(true);
