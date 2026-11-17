@@ -69,15 +69,7 @@ export default function ModalCalcResult({ isOpen, onClose, calcData }) {
             <div key={index} className={css.receiptRow}>
               <span className={css.label}>
                 {extra.label}
-                <span className={css.calcDetails}>
-                  {
-                    extra.isPerMeter
-                      ? extra.qty > 1
-                        ? ` (${extra.qty} м² × ${extra.unitPrice} ₴)`
-                        : ` (${extra.unitPrice} ₴/м²)`
-                      : `` // Якщо це не метри, просто пишемо ціну без м²
-                  }
-                </span>
+                <span className={css.calcDetails}>{extra.details}</span>
               </span>
               <span className={css.dots}></span>
               <span className={css.value}>{extra.totalPrice} ₴</span>

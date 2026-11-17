@@ -28,13 +28,13 @@ const COMPARISON_FEATURES = [
 
 export default function PricesPage() {
   const [activeProperty, setActiveProperty] = useState("flat");
-  const [services, setServices] = useState({ main: [], additional: [] });
+  const [services, setServices] = useState({ main: [], additional: [], drycleaning: [] });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Використовуємо коректний синтаксис перейменування: "нове_ім'я": старе_ім'я
     const query = `{
-      "main": *[_type == "service" && isMainService == true]{
+      "main": *[_type == "service" && isMainService == true] | order(sortOrder asc, _createdAt asc){
         "id": serviceId.current,
         title,
         "desc": description,
@@ -44,7 +44,11 @@ export default function PricesPage() {
           "office": priceOffice 
         }
       },
-      "additional": *[_type == "service" && isMainService == false]{
+      "additional": *[_type == "service" && isMainService != true && category != "drycleaning"] | order(sortOrder asc, _createdAt asc){
+        "name": title,
+        "price": singlePrice
+      },
+      "drycleaning": *[_type == "service" && isMainService != true && category == "drycleaning"] | order(sortOrder asc, _createdAt asc){
         "name": title,
         "price": singlePrice
       }
@@ -111,6 +115,23 @@ export default function PricesPage() {
             </div>
           </div>
         </section>
+        {services.drycleaning.length > 0 && (
+          <section className={css.additionalSection}>
+            <div className='container'>
+              <h2 className={css.sectionTitle}>Хімчистка</h2>
+              <div className={css.additionalGrid}>
+                {services.drycleaning.map((service, i) => (
+                  <div key={i} className={css.additionalCard}>
+                    <div className={css.addInfo}>
+                      <span>{service.name}</span>
+                      <span className={css.addPrice}>{service.price}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
         <section className={css.comparisonSection}>
           <div className='container'>
             <h2 className={css.sectionTitle}>Що входить у вартість?</h2>

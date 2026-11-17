@@ -217,3 +217,76 @@
     align-items: start;
   }
 }
+
+/* --- ДОДАТКОВІ ПОЛЯ: площа / кількість / варіанти (розміри вікон) --- */
+.extraLabel {
+  display: block;
+  margin: 0 0 8px 20px;
+  font-size: 0.875rem;
+  color: var(--dark-blue);
+}
+
+.variantBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid var(--dark-blue);
+  border-radius: 24px;
+}
+
+.variantBox .extraLabel {
+  margin: 0 0 4px 4px;
+  font-weight: 600;
+}
+
+.variantRow {
+  display: grid;
+  grid-template-columns: 1fr auto 72px;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 4px 4px 12px;
+  font-size: 0.875rem;
+  color: var(--dark-blue);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.variantRow:hover {
+  background-color: rgba(22, 38, 76, 0.03);
+}
+
+.variantName {
+  min-width: 0;
+}
+
+.variantPrice {
+  color: var(--main-teal);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.qtyInput {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 16px;
+  text-align: center;
+  color: var(--dark-blue);
+  background-color: transparent;
+  border: 1px solid var(--dark-blue);
+  border-radius: 50px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.qtyInput:focus {
+  border-color: var(--main-teal);
+}
+
+@media (max-width: 400px) {
+  .variantRow {
+    grid-template-columns: 1fr auto 60px;
+    gap: 8px;
+  }
+}

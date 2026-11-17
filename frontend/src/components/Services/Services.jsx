@@ -14,7 +14,7 @@ export default function Services() {
   useEffect(() => {
     // Додаємо фільтр && isMainService == true
     const query =
-      '*[_type == "service" && isMainService == true]{_id, title, isMainService, priceFlat, singlePrice, image}';
+      '*[_type == "service" && isMainService == true] | order(sortOrder asc, _createdAt asc){_id, title, isMainService, priceFlat, singlePrice, image}';
 
     client
       .fetch(query)
